@@ -48,17 +48,13 @@ class School:
     
     @staticmethod
     def value_to_grade(value):
-        if value >=4.5 and value<=5.00:
-            return 'A+'
-        elif value >= 3.5 and value <4.50:
+        if value >= 4.0:
             return 'A'
-        elif value >= 3.0 and value < 3.5:
-            return 'A-'
-        elif value >= 2.5 and value < 3.0:
+        elif value >= 3.0:
             return 'B'
-        elif value >= 2.0 and value < 2.5:
+        elif value >= 2.0:
             return 'C'
-        elif value >= 1.0 and value < 2.0:
+        elif value >= 1.0:
             return 'D'
         else:
             return 'F'
@@ -83,10 +79,11 @@ class School:
                 subject += f"{sub.name}\n"
         print(subject)
 
-        print("All Teachers and Assigned Subjects")
+        print("All Teachers")    
         teachers_info = ''
-        for subject, teacher in self.teachers.items():  # iterating through each subject-teacher pair
-            teachers_info += f"Subject: {subject}, Teacher: {teacher.name}\n"
+        for key,value in self.teachers.items():
+            for teacher in value.teachers:
+                teachers_info += f"Subject: {subject}, Teacher: {teacher.name}\n"
         print(teachers_info)
         
         # All Student Results
